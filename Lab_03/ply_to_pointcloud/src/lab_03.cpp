@@ -9,6 +9,9 @@
 #include <iostream>
 #include <array>
 
+#include <pcl/segmentation/sac_segmentation.h>
+#include <pcl/ModelCoefficients.h>
+
 int main(int argc, char* argv[])
 {
 	ros::init(argc, argv, "ply_to_pointcloud_node");
@@ -20,7 +23,8 @@ int main(int argc, char* argv[])
 	ros::Publisher cloud_publish[3];
 	for(int i = 0; i < 3; i++)
 	{
-		pcl::PointCloud<pcl::PointXYZ> cloud;
+		pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_ptr(new pcl::PointCloud<pcl::PointXYZ>);
+		pcl::PointCloud<pcl::PointXYZ>& cloud = *cloud_ptr;
 		cloud.header.frame_id = "points";
 
 		cloud.height = 1;
@@ -34,11 +38,6 @@ int main(int argc, char* argv[])
 		cloud.points.resize(cloud.height * cloud.width);
 		cloud.points.clear();
 
-		for(int i = 0; i < s.size(); i++)
-		{
-			std::cout << s[i] << std::endl;
-		}
-
 		for(int i = 0; i < vPos.size(); i++)
 		{
 			pcl::PointXYZ p;
@@ -46,8 +45,25 @@ int main(int argc, char* argv[])
 			p.y = vPos[i][2];
 			p.z = vPos[i][1];
 
-			std::cout << p << std::endl;
+			//std::cout << p << std::endl;
 			cloud.points.push_back(p);
+		}
+		//RANSAC
+		{
+			pcl::ModelCoefficients::Ptr coefficients(new pcl::ModelCoefficients);
+			pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
+    			pcl::SACSegmentation<pcl::PointXYZ> seg;
+	
+			seg.setOptimizeCoefficients (true);
+			seg.setModelType (pcl::SACMODEL_PLANE);
+			seg.setMethodType (pcl::SAC_RANSAC);
+			seg.setDistanceThreshold(0.01);
+
+			seg.setInputCloud(cloud_ptr);
+		        seg.segment(*inliers, *coefficients);
+
+
+			ROS_INFO("Plane: %fx, %fy, %fz, %f", coefficients->values[0], coefficients->values[1], coefficients->values[2], coefficients->values[3]);
 		}
 	
 		pcl::toROSMsg(cloud, point_cloud);

@@ -1,0 +1,161 @@
+White wall:
+150cm:
+Plane: 0.004013x, -0.999987y, -0.003124z, -1.483878
+100cm:
+Plane: -0.021291x, -0.999747y, -0.007300z, -0.994137
+50cm:
+Plane: 0.000564x, -0.999966y, -0.008186z, -0.489329
+
+Cardboard:
+150cm:
+Plane: -0.040727x, -0.998341y, -0.040694z, -1.505560
+100cm:
+Plane: -0.000808x, -0.999584y, -0.028846z, -1.022104
+50cm:
+Plane: 0.020251x, -0.996319y, -0.083291z, -0.50389
+
+
+--------------------Pre Calibration-------------------------
+CustomRW for Intel RealSense D400, Version: 2.6.8.0
+
+  Device PID: 0B3A
+  Device name: Intel RealSense D435I
+  Serial number: 949122070597
+  Firmware version: 05.12.03.00
+255.255.255.255
+
+Calibration parameters from the device:
+  resolutionLeftRight: 1280 800
+
+  FocalLengthLeft: 637.091125 635.569763
+  PrincipalPointLeft: 632.999817 400.106049
+  DistortionLeft: -0.058787 0.064141 -0.000015 0.000252 -0.020524
+
+  FocalLengthRight: 638.216797 636.719971
+  PrincipalPointRight: 636.300110 400.930939
+  DistortionRight: -0.058433 0.063167 -0.000327 0.000404 -0.020134
+
+  RotationLeftRight: 0.999924 -0.000028 -0.012339
+                     0.000034 1.000000 0.000475
+                     0.012339 -0.000475 0.999924
+  TranslationLeftRight: -50.221127 0.092666 -0.297511
+
+  HasRGB: 1
+
+  resolutionRGB: 1920 1080
+
+  FocalLengthColor: 1374.774292 1371.975342
+  PrincipalPointColor: 967.748657 536.860535
+  DistortionColor: 0.000000 0.000000 0.000000 0.000000 0.000000
+  RotationLeftColor: 0.999968 -0.007103 -0.003651
+                     0.007119 0.999965 0.004503
+                     0.003619 -0.004529 0.999983
+  TranslationLeftColor: 14.901710 0.398613 -0.179308
+
+---------------------Post Calibration--------------------------
+CustomRW for Intel RealSense D400, Version: 2.6.8.0
+
+  Device PID: 0B3A
+  Device name: Intel RealSense D435I
+  Serial number: 949122070597
+  Firmware version: 05.12.03.00
+255.255.255.255
+
+Calibration parameters from the device:
+  resolutionLeftRight: 1280 800
+
+  FocalLengthLeft: 637.091125 635.569763
+  PrincipalPointLeft: 632.999817 400.106049
+  DistortionLeft: -0.058787 0.064141 -0.000015 0.000252 -0.020524
+
+  FocalLengthRight: 638.216797 636.719971
+  PrincipalPointRight: 636.300110 400.930939
+  DistortionRight: -0.058433 0.063167 -0.000327 0.000404 -0.020134
+
+  RotationLeftRight: 0.999919 -0.000036 -0.012701
+                     0.000042 1.000000 0.000501
+                     0.012701 -0.000502 0.999919
+  TranslationLeftRight: -50.221012 0.092275 -0.315709
+
+  HasRGB: 1
+
+  resolutionRGB: 1920 1080
+
+  FocalLengthColor: 1374.774292 1371.975342
+  PrincipalPointColor: 967.748657 536.860535
+  DistortionColor: 0.000000 0.000000 0.000000 0.000000 0.000000
+  RotationLeftColor: 0.999957 -0.008432 -0.003796
+                     0.008447 0.999956 0.004068
+                     0.003762 -0.004100 0.999985
+  TranslationLeftColor: 14.901192 0.418500 -0.177060
+
+
+-------------------------------------------------------------------
+
+
+
+Cardboard:
+150cm:
+Plane: -0.001117x, -0.999402y, -0.034575z, -1.547146
+100cm:
+Plane: -0.015885x, -0.999650y, -0.021175z, -1.024669
+50cm:
+Plane: 0.013964x, -0.998297y, -0.056635z, -0.499577
+
+------------Manual Calibration-------------------------------------
+<param name = "FocalLengthLeft">
+        <value>637.091</value>
+        <value>635.57</value>
+    </param>
+
+changed to :
+<param name = "FocalLengthLeft">
+        <value>640.00</value>
+        <value>635.00</value>
+    </param>
+
+150cm:
+Plane: -0.188714x, -0.981806y, -0.021076z, -1.491102
+100cm:
+Plane: -0.028232x, -0.998939y, -0.036374z, -1.003344
+50:
+Plane: -0.012752x, -0.998873y, -0.045713z, -0.501996
+
+
+-------------------------------
+
+<param name = "DistortionLeft">
+        <value>-0.0587871</value>
+        <value>0.0641407</value>
+        <value>-1.53055e-05</value>
+        <value>0.000252442</value>
+        <value>-0.020524</value>
+    </param>
+<param name = "TranslationLeftRight">
+        <value>-50.221</value>
+        <value>0.0922751</value>
+        <value>-0.315709</value>
+    </param>
+changed to:
+<param name = "DistortionLeft">
+        <value>-0.0607871</value>
+        <value>0.0701407</value>
+        <value>-1.60055e-05</value>
+        <value>0.000302442</value>
+        <value>-0.025524</value>
+    </param>
+<param name = "TranslationLeftRight">
+        <value>-52.221</value>
+        <value>0.1022751</value>
+        <value>-0.355709</value>
+    </param>
+
+150cm:
+Plane: -0.116796x, -0.992052y, -0.046811z, -1.557648
+100cm:
+Plane: -0.014681x, -0.999283y, -0.034887z, -1.049662
+50cm:
+Plane: -0.008918x, -0.999722y, -0.021817z, -0.513780
+
+
+
